@@ -1,0 +1,347 @@
+
+/* 1 */
+html {
+  font-size: 14px;
+}
+
+/* 1 */
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* 1 */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* 1 */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* 1 */
+body {
+  margin-bottom: 60px;
+}
+
+/* 1 */
+.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
+  color: var(--bs-secondary-color);
+  text-align: end;
+}
+
+/* 1 */
+.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
+  text-align: start;
+}
+
+/* 1 */
+/* TOP-BAR */
+.top-bar {
+    font-size: 16px;
+    background-color: #f8f9fa;
+}
+
+.top-bar i {
+        margin-right: 10px;
+        color: #ff6600; /* orange accent for icons */
+    }
+
+.top-bar a.btn {
+        font-size: 16px;
+        padding: 3px 10px;
+    }
+/* TOP-BAR */
+
+/* 1 */
+/* background section */
+.banner-section {
+    background: url('/images/home-bg.jfif') center/cover no-repeat;
+    padding: 40px 0;
+    margin-top: 1px; /* Adjust this value as needed */
+}
+
+}
+/* background section */
+
+
+/* 1 */
+/* Review 3 color */
+
+.test-red {
+    color: #f51111;
+}
+
+.text-yellow {
+    color: #FFA550;
+}
+
+.text-orange {
+    color: #C7613C;
+}
+
+.text-blue {
+    color: #2891DA;
+}
+
+.text-black {
+    color: black;
+}
+
+.brand-text {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+/* Review 3 color */
+
+
+/* 1 */
+/* Nav Box Styling */
+.nav-box {
+    background-color: #f1efe9;
+    border-radius: 8px;
+    margin-top: 20px; /* Space from the logo section */
+    max-width: 100%; /* Keep it responsive */
+    overflow-x: auto; /* For small screens */
+    white-space: nowrap;
+    display: flex;
+    justify-content: space-between;
+    gap: 1px; /* Tiny gap between buttons */
+}
+
+/* Nav Buttons (Normal and Hover states) */
+.nav-btn {
+    color: white; /* Text color */
+    background-color: #C7613C; /* Normal background */
+    text-decoration: none;
+    padding: 10px 15px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 4px;
+    width: 130px; /* Fixed width for same button size */
+    text-align: center; /* Center the text */
+    display: inline-block;
+    margin: 0; /* Remove margin */
+}
+
+    .nav-btn:hover {
+        background-color: #FFA550; /* Change to #FFA550 on hover */
+    }
+
+/* Special Styling for "Get a Quote" */
+.quote-btn {
+    background-color: #2891DA;
+    color: white;
+    border-radius: 4px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+    width: 130px; /* Same width as the other buttons */
+    text-align: center; /* Center the text */
+    margin: 0; /* Remove margin */
+}
+
+    .quote-btn:hover {
+        background-color: #FFA550; /* Color change to #FFA550 on hover */
+    }
+/* Nav Box Styling */
+
+
+
+/* 1 */
+
+/* Content Box Styling */
+.content-box {
+    background-color: #f1efe9;
+    width: 450px;
+    height: auto;
+    padding: 20px;
+    border-radius: 1px;
+    margin-top: 20px;
+    margin-left: 0.3%; /* Same left margin as Nav box for consistent alignment */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Welcome Section */
+.welcome-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    justify-content: flex-start; /* Aligns the content to the left */
+    width: 100%; /* Ensures the content takes full width */
+}
+
+.welcome-text {
+    margin-right: 10px;
+}
+
+.welcome-top {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.welcome-bottom {
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1.2;
+}
+
+
+.eshift-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Intro Text */
+.intro-text {
+    font-size: 1rem;
+    margin-bottom: 30px;
+    color: #000;
+}
+
+/* Buttons */
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.action-btn {
+    background-color: #C7613C;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 999px; /* Makes the button oval */
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    white-space: nowrap; /* Keeps the text in one line */
+}
+
+/* Hover Effect for Learn More button only */
+.learn-more-btn:hover {
+    background-color: #FFA550;
+}
+
+/* Hover Effect for Contact Us button */
+.contact-us-btn:hover {
+    background-color: #2891DA;
+}
+
+/* Content Box Styling */
+
+/* 1 */
+.eshift-logo {
+    margin-top: 30px;
+    height: 20px;
+    border-radius: 20%;
+    object-fit: cover;
+}
+
+/* 1 */
+
+.main-section {
+    margin-top: 70px;
+}
+
+/* Services Section */
+.services-section {
+    background-color: #f1efe9;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Heading */
+.services-heading {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Service Box */
+.service-box {
+    background-color: white;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Image */
+.service-img img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+/* Service Content */
+.service-content {
+    padding: 15px;
+    flex-grow: 1;
+}
+
+    .service-content h3 {
+        font-size: 1.2rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        color: #333;
+    }
+
+    .service-content p {
+        font-size: 0.95rem;
+        color: #555;
+        margin: 0;
+    }
+
+/* Learn More Button */
+.service-btn {
+    display: block;
+    background-color: #C7613C;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 0;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    border-top: 1px solid #ddd;
+}
+
+    .service-btn:hover {
+        background-color: #FFA550;
+    }
+
+/* Divider Line */
+.section-divider {
+    margin: 40px auto 0 auto;
+    height: 3px;
+    width: 90%;
+    background-color: #8B0000; /* Dark red */
+    opacity: 0.7;
+    border-radius: 2px;
+}
+
+
+/* 1 */
