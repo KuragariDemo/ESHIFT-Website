@@ -284,4 +284,5 @@ D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\EShift\obj\De
 D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\EShift\obj\Debug\net9.0\EShift.pdb
 D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\EShift\obj\Debug\net9.0\EShift.genruntimeconfig.cache
 D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\EShift\obj\Debug\net9.0\ref\EShift.dll
-D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\EShift\obj\Debug\net9.0\compressed\9j5lc14i5h-dx9qakw4z7.gz
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\EShift\obj\Debug\net9.0\EShift.sourcelink.json
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\EShift\obj\Debug\net9.0\compressed\9j5lc14i5h-5xvtl0hhn6.gz
