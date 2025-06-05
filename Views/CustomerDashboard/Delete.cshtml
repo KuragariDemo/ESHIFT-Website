@@ -1,0 +1,14 @@
+﻿@model EShift.Models.Customer
+
+@{
+    ViewData["Title"] = "Delete Customer";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>Are you sure you want to delete the customer <strong>@Model.Name</strong>?</p>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a href="@Url.Action("Index", "CustomerDashboard")" class="btn btn-secondary">Cancel</a>
+</form>

@@ -16,7 +16,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EShift")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb6219c6efec4b387ffb05a1e40ee545a7363395")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+>>>>>>> 845cbcd (Initial commit)
 [assembly: System.Reflection.AssemblyProductAttribute("EShift")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EShift")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

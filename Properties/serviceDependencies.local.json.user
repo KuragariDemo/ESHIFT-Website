@@ -1,5 +1,12 @@
 {
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "mssql2": {
+      "restored": true,
+      "restoreTime": "2025-06-04T14:23:07.5271566Z"
+    },
+>>>>>>> 845cbcd (Initial commit)
     "mssql1": {
       "restored": true,
       "restoreTime": "2025-05-31T07:00:38.8649404Z"

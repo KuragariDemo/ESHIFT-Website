@@ -1,6 +1,7 @@
 {
   "format": 1,
   "restore": {
+<<<<<<< HEAD
     "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\EShift\\EShift.csproj": {}
   },
   "projects": {
@@ -12,6 +13,19 @@
         "projectPath": "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\EShift\\EShift.csproj",
         "packagesPath": "C:\\Users\\Demo\\.nuget\\packages\\",
         "outputPath": "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\EShift\\obj\\",
+=======
+    "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\ESHIFT-Website-main\\EShift.csproj": {}
+  },
+  "projects": {
+    "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\ESHIFT-Website-main\\EShift.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\ESHIFT-Website-main\\EShift.csproj",
+        "projectName": "EShift",
+        "projectPath": "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\ESHIFT-Website-main\\EShift.csproj",
+        "packagesPath": "C:\\Users\\Demo\\.nuget\\packages\\",
+        "outputPath": "D:\\IT\\LMU\\Sem 1st\\App and Web Dev\\Assignment\\CC\\Software & Website\\ESHIFT-Website-main\\obj\\",
+>>>>>>> 845cbcd (Initial commit)
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,6 +83,13 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[9.0.2, )"
+<<<<<<< HEAD
+=======
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+>>>>>>> 845cbcd (Initial commit)
             }
           },
           "imports": [
