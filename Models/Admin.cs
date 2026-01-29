@@ -1,6 +1,6 @@
 ﻿// Models/Admin.cs
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations.Schema; // For DatabaseGenerated attribute
 
 namespace EShift.Models
 {
