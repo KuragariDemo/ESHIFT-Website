@@ -1,0 +1,170 @@
+﻿@model EShift.Models.CustomerProfileViewModel
+
+@{
+    Layout = "~/Views/Shared/_CustomerDashboardLayout.cshtml";
+    ViewData["Title"] = "Customer Profile";
+}
+
+<style>
+    /* Base styles for the page */
+    body {
+        font-family: 'Inter', sans-serif; /* Consistent modern font */
+        background-color: #f8fafc; /* Light background for overall page */
+        color: #334155; /* Default text color */
+    }
+
+    /* Profile Wrapper Card */
+    .profile-wrapper {
+        max-width: 550px; /* Slightly wider for better layout */
+        margin: 40px auto; /* More vertical margin */
+        background-color: white; /* Clean white background for the card */
+        padding: 2.5rem; /* More generous padding */
+        border-radius: 0.75rem; /* Softer rounded corners */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+        border: 1px solid #e2e8f0; /* Subtle border */
+        position: relative; /* For potential future absolute positioning of elements */
+    }
+
+    /* Header Styling */
+    .profile-header {
+        font-size: 2.25rem; /* Larger, more prominent header */
+        font-weight: 800; /* Extra bold */
+        color: #1a202c; /* Darker header text */
+        margin-bottom: 2rem; /* More spacing below header */
+        text-align: center; /* Center the header */
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #e2e8f0; /* Subtle underline */
+        display: block;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Profile Image (if you add it back) */
+    /* If you plan to re-introduce a profile image, here's a refined style: */
+    /*
+        .profile-img {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 25px auto;
+            border: 4px solid #4f46e5; // Primary color border
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); // Subtle shadow for depth
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+        */
+
+    /* Form Group Styling */
+    .form-group {
+        margin-bottom: 1.5rem; /* Consistent spacing between form fields */
+    }
+
+    .form-label {
+        display: block;
+        font-weight: 700; /* Bolder label text */
+        color: #334155; /* Darker label color */
+        margin-bottom: 0.6rem; /* Space between label and input */
+        font-size: 0.95rem; /* Slightly larger label text */
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 0.75rem 1rem; /* More generous padding inside inputs */
+        background-color: #f8fafc; /* Lighter background for inputs */
+        border: 1px solid #cbd5e1; /* Subtle border */
+        border-radius: 0.5rem; /* Softer rounded corners */
+        color: #334155;
+        font-size: 1rem;
+        line-height: 1.5;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; /* Smooth transitions */
+    }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #4f46e5; /* Primary color on focus */
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); /* Soft focus ring */
+            background-color: white; /* White background when focused */
+        }
+
+    /* Submit Button */
+    .btn-submit {
+        background-color: #4f46e5; /* Vibrant primary color */
+        color: white;
+        padding: 0.85rem 1.5rem; /* More padding for a substantial button */
+        border: none;
+        border-radius: 0.5rem; /* Consistent rounded corners */
+        width: 100%; /* Full width */
+        font-size: 1.05rem; /* Slightly larger text */
+        font-weight: 600; /* Semibold */
+        cursor: pointer;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+        margin-top: 1.5rem; /* Space above button */
+    }
+
+        .btn-submit:hover {
+            background-color: #4338ca; /* Darker on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+        }
+
+        .btn-submit:active {
+            transform: translateY(0); /* Press down effect */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Logout Form/Button */
+    .logout-form {
+        text-align: center;
+        margin-top: 2rem; /* More space above logout */
+    }
+
+        .logout-form button {
+            background: none; /* No background */
+            border: none;
+            color: #ef4444; /* Strong red for logout (a warning/destructive action) */
+            cursor: pointer;
+            text-decoration: none; /* No default underline */
+            font-weight: 600; /* Semibold */
+            font-size: 0.95rem; /* Slightly smaller text */
+            padding: 0.5rem 1rem; /* Padding for click area */
+            border-radius: 0.375rem; /* Slight rounding */
+            transition: color 0.2s ease, background-color 0.2s ease;
+        }
+
+            .logout-form button:hover {
+                color: white; /* White text on hover */
+                background-color: #ef4444; /* Red background on hover */
+                text-decoration: none; /* No underline */
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+</style>
+
+<h1 class="profile-header">Your Profile</h1>
+
+<div class="profile-wrapper">
+
+    <form asp-action="CusProfile" method="post" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label for="Name" class="form-label">Name</label>
+            <input type="text" name="Name" id="Name" value="@Model.Name" class="form-input" required />
+        </div>
+
+        <div class="form-group">
+            <label for="Password" class="form-label">New Password</label>
+            <input type="password" name="Password" id="Password" placeholder="Leave blank to keep current password" class="form-input" />
+        </div>
+
+        <button type="submit" class="btn-submit">Save Changes</button>
+    </form>
+
+    <form asp-controller="Account" asp-action="Logout" method="post" class="logout-form">
+        <button type="submit">Log Out</button>
+    </form>
+</div>

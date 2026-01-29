@@ -1,0 +1,61 @@
+﻿@model EShift.Models.Car
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Edit Car";
+
+    bool isStatusDisabled = Model.Status == "Busy" || (!string.IsNullOrEmpty(Model.AssignedJobId) && Model.AssignedJobId != "NON");
+}
+
+<div class="car-form-container">
+    <h2>Edit Car</h2>
+
+    <!-- 🔴 Show validation errors -->
+    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+    {
+        <div class="validation-error">@error.ErrorMessage</div>
+    }
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="CarID" />
+
+        <label>Car Type</label>
+        <select asp-for="CarType">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+
+        <label>Car License No</label>
+        <input asp-for="CarLicenseNo" />
+
+        <label>Car Model</label>
+        <input asp-for="CarModel" />
+
+        <label>Status</label>
+
+        @if (isStatusDisabled)
+        {
+            <!-- Disabled dropdown if car is Busy or Assigned -->
+            <select asp-for="Status" disabled="disabled">
+                <option value="Available" selected="@(Model.Status == "Available")">Available</option>
+                <option value="Busy" selected="@(Model.Status == "Busy")">Busy</option>
+                <option value="Under Maintenance" selected="@(Model.Status == "Under Maintenance")">Under Maintenance</option>
+            </select>
+            <input type="hidden" name="Status" value="@Model.Status" />
+            <p class="status-note" style="color: red;">Cannot change status while car is busy or assigned to a job.</p>
+        }
+        else
+        {
+            <!-- Editable dropdown (No Busy option!) -->
+            <select asp-for="Status">
+                <option value="Available" selected="@(Model.Status == "Available")">Available</option>
+                <option value="Under Maintenance" selected="@(Model.Status == "Under Maintenance")">Under Maintenance</option>
+            </select>
+        }
+
+        <button type="submit" class="btn-primary">Update</button>
+        <a asp-action="Index" class="button-link btn-secondary">Cancel</a>
+    </form>
+</div>
+

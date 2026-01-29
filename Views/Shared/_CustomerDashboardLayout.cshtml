@@ -1,0 +1,65 @@
+﻿@{
+    Layout = null;
+    var userName = User.Identity.Name ?? "Customer";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - E-SHIFT</title>
+    <link rel="stylesheet" href="~/css/dashboard.css" />
+</head>
+<body class="cd-body">
+    <div class="cd-dashboard-container">
+        <!-- Sidebar -->
+        <div class="cd-sidebar">
+            <div>
+                <img src="~/images/logo.png" alt="E-SHIFT Logo" class="cd-logo" />
+                <div class="cd-welcome">
+                    <span class="cd-customer-name">@userName</span>
+                </div>
+                <div class="cd-nav-buttons">
+
+                    <!-- To Home BTN -->
+                    <a href="/Home/Index" class="cd-nav-btn">
+                        <img src="~/images/Home.png" alt="Home" /> HOME
+                    </a>
+                    <!-- To Home BTN -->
+                    <!-- To Order BTN -->
+                    <a href="/CustomerOrder/CusOrder" class="cd-nav-btn">
+                        <img src="~/images/CusOrder.png" alt="Order" /> ORDER
+                    </a>
+                    <!-- To Order BTN -->
+
+                    <!-- My Order List -->
+                    <a href="/CustomerOrder/CusOrderList" class="cd-nav-btn">
+                        <img src="~/images/CusOrderList.png" alt="My Order List" /> My Order List
+                    <!-- My Order List -->
+
+                    <!-- To Message Box BTN -->
+                    <a href="/CustomerOrder" class="cd-nav-btn"><img src="~/images/massage.png" alt="Order" /> Message Box</a>
+                    <!-- To Message Box BTN -->
+
+                    <!-- To SETTING BTN -->
+                    <a asp-controller="CustomerDashboard" asp-action="CusProfile" class="cd-nav-btn">
+                            <img src="~/images/profile.png" alt="Profile" /> Profile
+                    </a>
+                    <!-- To SETTING BTN -->
+                </div>
+            </div>
+            <div class="cd-footer">
+                <span>@userName</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="cd-main-content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Add this line to render any scripts section -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

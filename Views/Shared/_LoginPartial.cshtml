@@ -1,0 +1,65 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<div class="d-flex align-items-center">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout" method="post" class="d-inline">
+            <button type="submit"
+                    style="
+            background-color: transparent;
+            color: #c7613c;
+            border: 2px solid #c7613c;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-right: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            "
+                    onmouseover="this.style.backgroundColor='#2891da'; this.style.color='white';"
+                    onmouseout="this.style.backgroundColor='transparent'; this.style.color='#c7613c';">
+                Logout
+            </button>
+
+        </form>
+    }
+    else
+    {
+        <a asp-area="Identity" asp-page="/Account/Login"
+           style="
+       background-color: transparent;
+       color: #2891da;
+       border: 2px solid #2891da;
+       padding: 8px 16px;
+       border-radius: 6px;
+       text-decoration: none;
+       margin-right: 10px;
+       font-weight: 500;
+       transition: 0.3s;
+       "
+           onmouseover="this.style.backgroundColor='#2891da'; this.style.color='white';"
+           onmouseout="this.style.backgroundColor='transparent'; this.style.color='#2891da';">
+            Sign In
+        </a>
+
+        <a asp-area="Identity" asp-page="/Account/Register"
+           style="
+       background-color: #c7613c;
+       color: white;
+       border: 2px solid #c7613c;
+       padding: 8px 16px;
+       border-radius: 6px;
+       text-decoration: none;
+       font-weight: 500;
+       transition: 0.3s;
+       "
+           onmouseover="this.style.backgroundColor='#2891da'; this.style.borderColor='#2891da';"
+           onmouseout="this.style.backgroundColor='#c7613c'; this.style.borderColor='#c7613c';">
+            Sign Up
+        </a>
+
+    }
+</div>

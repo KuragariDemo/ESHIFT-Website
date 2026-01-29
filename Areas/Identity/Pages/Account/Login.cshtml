@@ -1,0 +1,93 @@
+﻿@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Login - E-SHIFT</title>
+</head>
+<body style="margin:0; padding:0; font-family:Arial, sans-serif; background-color:#f1efe9;">
+
+    <div style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    ">
+        <div style="
+            background-color: #f1efe9;
+            padding: 40px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            width: 360px;
+            border-radius: 10px;
+            text-align: center;
+        ">
+            <!-- Logo and Title -->
+            <img src="~/images/logo.png" alt="Logo" style="width: 100px; height: auto; margin-bottom: 10px; border-radius: 15%;" />
+            <h2 style="margin: 0 0 30px; color: #333; font-weight: bold;">E-SHIFT</h2>
+
+            <!-- Login Form -->
+            <form method="post">
+                <input asp-for="Input.Email" placeholder="User Name" style="
+                    width: 100%;
+                    padding: 12px;
+                    margin-bottom: 15px;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #babcba;
+                    font-size: 16px;
+                " />
+
+                <input asp-for="Input.Password" placeholder="Password" type="password" style="
+                    width: 100%;
+                    padding: 12px;
+                    margin-bottom: 10px;
+                    border: none;
+                    border-radius: 5px;
+                    background-color: #babcba;
+                    font-size: 16px;
+                " />
+
+                <!-- Forgot Password and Remember Me -->
+                <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    font-size: 14px;
+                    margin-bottom: 20px;
+                    color: #ffa550;
+                ">
+                    <label>
+                        <input asp-for="Input.RememberMe" type="checkbox" />
+                        Remember Me
+                    </label>
+                    <a asp-page="./ForgotPassword" style="color: #ffa550; text-decoration: none;">
+                        Forgot Password?
+                    </a>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" style="
+                    background-color: #c7613c;
+                    color: white;
+                    border: none;
+                    border-radius: 5px;
+                    padding: 12px;
+                    width: 100%;
+                    font-size: 16px;
+                    cursor: pointer;
+                    transition: background-color 0.3s ease;
+                "
+                        onmouseover="this.style.backgroundColor='#2891da';"
+                        onmouseout="this.style.backgroundColor='#c7613c';">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

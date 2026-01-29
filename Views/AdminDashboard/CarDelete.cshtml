@@ -1,0 +1,21 @@
+﻿@model EShift.Models.Car
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Delete Car";
+}
+
+<div class="car-form-container">
+    <h2>Are you sure you want to delete this car?</h2>
+
+    <p><strong>Car Type:</strong> @Model.CarType</p>
+    <p><strong>License No:</strong> @Model.CarLicenseNo</p>
+    <p><strong>Model:</strong> @Model.CarModel</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+
+    <form asp-action="Delete" asp-route-id="@Model.CarID" method="post">
+        <input type="hidden" asp-for="CarID" />
+        <button type="submit" class="btn-danger">Delete</button>
+        <a asp-action="Index" class="button-link btn-secondary">Cancel</a>
+    </form>
+</div>

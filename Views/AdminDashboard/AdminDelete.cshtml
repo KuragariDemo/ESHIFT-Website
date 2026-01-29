@@ -1,0 +1,141 @@
+﻿@model EShift.Models.Admin
+
+@{
+    ViewData["Title"] = "Delete Admin";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<style>
+    /* Base styles for the page - consistent with others */
+    body {
+        font-family: 'Inter', sans-serif; /* Consistent font */
+        background-color: #f8fafc; /* Light background */
+        color: #334155;
+    }
+
+    /* Header Styling */
+    .delete-admin-header {
+        font-size: 2.25rem; /* Larger and more prominent */
+        font-weight: 800; /* Extra bold */
+        color: #1a202c; /* Darker header color */
+        margin-bottom: 2.5rem; /* More spacing below header */
+        text-align: center; /* Center the header */
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #e2e8f0; /* Subtle underline */
+        display: block; /* Ensures border spans full width */
+        width: fit-content; /* Adjust width to content */
+        margin-left: auto; /* Center the header block */
+        margin-right: auto; /* Center the header block */
+    }
+
+    /* Confirmation Card Styling */
+    .delete-card {
+        background: white;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+        border-radius: 0.75rem; /* More rounded corners */
+        padding: 2.5rem; /* More generous padding inside the card */
+        max-width: 500px; /* Consistent width for forms */
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #e2e8f0; /* Light border */
+        text-align: center; /* Center content within the card */
+    }
+
+    .delete-card-title {
+        font-size: 1.6rem; /* Slightly larger for emphasis */
+        font-weight: 700; /* Bolder */
+        color: #1a202c; /* Darker title */
+        margin-bottom: 1.5rem;
+    }
+
+    .delete-info-item {
+        font-size: 1rem; /* Slightly larger text for details */
+        color: #4b5563; /* Muted text color */
+        margin-bottom: 0.8rem;
+    }
+
+    .delete-warning {
+        font-size: 1.1rem; /* Prominent warning text */
+        font-weight: 700; /* Bolder */
+        color: #dc2626; /* Strong red for warning */
+        margin-top: 1.8rem; /* More space above warning */
+        margin-bottom: 2rem; /* More space below warning */
+        padding: 0.75rem 1rem; /* Padding for the warning text */
+        background-color: #fee2e2; /* Light red background */
+        border: 1px solid #fca5a5; /* Red border */
+        border-radius: 0.5rem; /* Rounded corners for the warning box */
+        display: inline-block; /* Allows padding and border to wrap content */
+    }
+
+    /* Action Buttons Styling */
+    .form-actions {
+        display: flex;
+        justify-content: space-between; /* Space out buttons */
+        align-items: center;
+        margin-top: 2rem; /* More space above action buttons */
+    }
+
+    .btn-delete-confirm {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem; /* More padding */
+        background-color: #ef4444; /* Strong red for delete */
+        color: white;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        border: none; /* Remove default button border */
+        cursor: pointer;
+    }
+
+        .btn-delete-confirm:hover {
+            background-color: #dc2626; /* Darker red on hover */
+            transform: translateY(-1px); /* Slight lift */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-delete-confirm:active {
+            transform: translateY(0); /* Press down */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    .btn-cancel {
+        color: #4f46e5; /* Primary blue/purple for cancel */
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+        .btn-cancel:hover {
+            color: #3c32a8; /* Darker on hover */
+            text-decoration: underline;
+        }
+</style>
+
+<h1 class="delete-admin-header">Delete Admin Account</h1>
+
+<div class="delete-card">
+    <h3 class="delete-card-title">Are you sure you want to delete this admin account?</h3>
+    <p class="delete-info-item">
+        <strong>Email:</strong> @Html.DisplayFor(model => model.Email)
+    </p>
+    <p class="delete-info-item">
+        <strong>Admin Level:</strong> @Html.DisplayFor(model => model.AdminLevel)
+    </p>
+
+    <p class="delete-warning">
+        This action cannot be undone.
+    </p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-actions">
+            <button type="submit" class="btn-delete-confirm">
+                Confirm Delete
+            </button>
+            <a asp-action="Index" class="btn-cancel">Cancel</a>
+        </div>
+    </form>
+</div>

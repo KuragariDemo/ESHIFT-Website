@@ -1,0 +1,365 @@
+﻿@model IEnumerable<EShift.Models.Admin>
+
+@{
+    ViewData["Title"] = "Admin Control";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    var currentAdminLevel = (int)ViewBag.CurrentAdminLevel;
+}
+
+<style>
+    /* Base styles for the page */
+    body {
+        font-family: 'Inter', sans-serif; /* A modern, clean font */
+        background-color: #f8fafc; /* Light background for content area */
+        color: #334155;
+    }
+
+    /* Admin Header */
+    .admin-header {
+        font-size: 2.25rem; /* Slightly larger for emphasis */
+        font-weight: 800; /* Extra bold */
+        color: #1a202c; /* Darker header color */
+        margin-bottom: 2rem;
+        border-bottom: 2px solid #e2e8f0; /* Subtle underline */
+        padding-bottom: 1rem;
+    }
+
+    /* Alert Messages */
+    .alert {
+        padding: 1rem 1.5rem; /* More generous padding */
+        margin-bottom: 1.5rem;
+        border-radius: 0.5rem; /* Softer corners */
+        position: relative;
+        font-weight: 600; /* Slightly bolder text */
+        display: flex;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+    }
+
+    .alert-success {
+        background-color: #ecfdf5; /* Lighter green background */
+        border: 1px solid #34d399; /* Stronger green border */
+        color: #065f46;
+    }
+
+    .alert-error {
+        background-color: #fff0f5; /* Lighter red background */
+        border: 1px solid #ef4444;
+        color: #991b1b;
+    }
+
+    .alert-icon {
+        margin-right: 0.75rem;
+        font-size: 1.5rem;
+    }
+
+    /* Primary Button (Register) */
+    .btn-primary {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.6rem 1.2rem; /* Smaller padding for a smaller button */
+        background-color: #4f46e5; /* A vibrant purple/blue */
+        color: white;
+        font-weight: 600;
+        border-radius: 0.5rem; /* More rounded */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* More pronounced shadow */
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transitions */
+        font-size: 0.95rem; /* Slightly smaller text for button */
+    }
+
+        .btn-primary:hover {
+            background-color: #4338ca; /* Darker on hover */
+            transform: translateY(-2px); /* Slight lift effect */
+        }
+
+        .btn-primary:active {
+            transform: translateY(0); /* Press down effect */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary svg {
+            margin-right: 0.5rem; /* Adjust icon spacing */
+            width: 1.1em; /* Make icon size relative to font size */
+            height: 1.1em;
+        }
+
+    /* Table Container */
+    .table-container {
+        background: white;
+        border-radius: 0.75rem; /* Even more rounded corners */
+        overflow: hidden;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+        border: 1px solid #e2e8f0; /* Light border around the table */
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 1.2rem 1.5rem; /* More padding in table cells */
+        border-bottom: 1px solid #eef2f6; /* Lighter border for rows */
+        text-align: left;
+    }
+
+    th {
+        background-color: #f8fafc; /* Lighter header background */
+        font-size: 0.8rem; /* Slightly larger header text */
+        font-weight: 700; /* Bolder header text */
+        color: #64748b; /* Muted header color */
+        text-transform: uppercase;
+        letter-spacing: 0.05em; /* Add some letter spacing */
+    }
+
+    tr:last-child td {
+        border-bottom: none; /* No border on the last row */
+    }
+
+    tr:hover {
+        background-color: #f5f7fa; /* More subtle hover effect */
+    }
+
+    /* Action Links */
+    .action-link {
+        font-weight: 600;
+        margin-right: 1.2rem; /* More spacing between links */
+        text-decoration: none;
+        transition: color 0.2s ease; /* Smooth color transition */
+    }
+
+    .action-edit {
+        color: #4f46e5;
+    }
+
+        .action-edit:hover {
+            color: #3c32a8; /* Darker on hover */
+            text-decoration: underline;
+        }
+
+    .action-delete {
+        color: #ef4444; /* Stronger red */
+    }
+
+        .action-delete:hover {
+            color: #b91c1c; /* Darker on hover */
+            text-decoration: underline;
+        }
+
+    .no-actions {
+        color: #9ca3af;
+        font-style: italic; /* Italicize for "No Actions" */
+    }
+
+    /* Modal for Delete Confirmation */
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Darker overlay */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        backdrop-filter: blur(4px); /* Blurs content behind modal */
+    }
+
+    .modal-content {
+        background: white;
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2), 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 90%;
+        max-width: 450px;
+        transform: scale(0.95); /* Slight initial scale for animation */
+        opacity: 0;
+        transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+    }
+
+    .modal-overlay.active .modal-content {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .modal-header {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1a202c;
+        margin-bottom: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .modal-body {
+        font-size: 1rem;
+        color: #4b5563;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-footer {
+        display: flex;
+        justify-content: flex-end;
+        gap: 0.75rem; /* Space between buttons */
+    }
+
+    .modal-btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .modal-btn-cancel {
+        background-color: #e2e8f0;
+        color: #4b5563;
+        border: 1px solid #cbd5e1;
+    }
+
+        .modal-btn-cancel:hover {
+            background-color: #cbd5e1;
+        }
+
+    .modal-btn-delete {
+        background-color: #ef4444;
+        color: white;
+        border: 1px solid #dc2626;
+    }
+
+        .modal-btn-delete:hover {
+            background-color: #dc2626;
+        }
+
+    .close-button {
+        background: none;
+        border: none;
+        font-size: 1.75rem;
+        color: #9ca3af;
+        cursor: pointer;
+        line-height: 1;
+        transition: color 0.2s ease;
+    }
+
+        .close-button:hover {
+            color: #6b7280;
+        }
+
+    .hidden {
+        display: none;
+    }
+</style>
+
+<h1 class="admin-header">Admin Control</h1>
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        <span class="alert-icon">&#10003;</span> @* Checkmark icon *@
+        <span>@TempData["SuccessMessage"]</span>
+    </div>
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-error">
+        <span class="alert-icon">&#x2717;</span> @* Cross icon *@
+        <span>@TempData["ErrorMessage"]</span>
+    </div>
+}
+
+@if (currentAdminLevel == 1)
+{
+    <div class="mb-6">
+        @* Increased margin bottom for spacing *@
+        <a asp-action="Register" class="btn-primary">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+            </svg>
+            Register New Admin
+        </a>
+    </div>
+}
+
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Email</th>
+                <th>Admin Level</th>
+                <th style="text-align: right;">Actions</th> @* Align header too *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AdminLevel)</td>
+                    <td style="text-align: right;">
+                        @if (currentAdminLevel == 1)
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.Id" class="action-link action-edit">Edit</a>
+                            <a href="#" onclick="showDeleteConfirmation(@item.Id, '@item.Email')" class="action-link action-delete">Delete</a>
+                        }
+                        else
+                        {
+                            <span class="no-actions">No Actions</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@* Delete Confirmation Modal *@
+<div id="deleteConfirmationModal" class="modal-overlay hidden">
+    <div class="modal-content">
+        <div class="modal-header">
+            Confirm Deletion
+            <button type="button" class="close-button" onclick="hideDeleteConfirmation()">&times;</button>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to delete the admin account: <strong id="adminEmailToDelete"></strong>? This action cannot be undone.
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="modal-btn modal-btn-cancel" onclick="hideDeleteConfirmation()">Cancel</button>
+            <form asp-action="Delete" method="post" style="display: inline;">
+                <input type="hidden" name="Id" id="deleteAdminId" />
+                <button type="submit" class="modal-btn modal-btn-delete">Delete</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    function showDeleteConfirmation(id, email) {
+        document.getElementById('deleteAdminId').value = id;
+        document.getElementById('adminEmailToDelete').innerText = email;
+        document.getElementById('deleteConfirmationModal').classList.remove('hidden');
+        document.getElementById('deleteConfirmationModal').classList.add('active'); // Add active class for animation
+    }
+
+    function hideDeleteConfirmation() {
+        const modal = document.getElementById('deleteConfirmationModal');
+        modal.classList.remove('active'); // Remove active class to trigger hide animation
+        // Wait for animation to finish before hiding display
+        setTimeout(() => {
+            modal.classList.add('hidden');
+        }, 300); // Match this with your CSS transition duration
+    }
+
+    // Close modal if clicking outside of it
+    window.onclick = function (event) {
+        const modal = document.getElementById('deleteConfirmationModal');
+        if (event.target == modal) {
+            hideDeleteConfirmation();
+        }
+    }
+</script>

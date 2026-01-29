@@ -1,0 +1,185 @@
+﻿@model List<EShift.Models.CustomerAssignedOrderDetailViewModel>
+
+@{
+    ViewData["Title"] = "Customer Assigned Order Detail";
+    Layout = "~/Views/Shared/_CustomerDashboardLayout.cshtml";
+}
+
+<h2 class="detail-heading">Customer Assigned Order Detail</h2>
+
+<div class="table-container">
+    <table class="assigned-order-table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Car Info</th>
+                <th>Driver</th>
+                <th>Assistant</th>
+                <th>Scheduled Date & Time</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderId</td>
+                    <td>@order.FromAddress</td>
+                    <td>@order.ToAddress</td>
+                    <td>@order.CustomerName (ID: @order.UserId)</td>
+                    <td>@order.Phone</td>
+                    <td>
+                        ID: @order.CarId <br />
+                        @order.CarLicNo <br />
+                        @order.CarModel (@order.CarType)
+                    </td>
+                    <td>@order.DriverName</td>
+                    <td>@order.AssistantName (ID: @order.AssistantId)</td>
+                    <td>@order.ScheduledDateTime.ToString("f")</td>
+                    <td>@order.Status</td>
+                    <td>
+                        @if (order.Status != "Finished")
+                        {
+                            <form asp-action="FinishOrder" asp-controller="CustomerAssignedOrderDetail" method="post">
+                                <input type="hidden" name="orderId" value="@order.OrderId" />
+                                <button type="submit" class="btn btn-success">Finished Order</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <span class="badge bg-secondary">Already Finished</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@if (Model.Any())
+{
+    <div class="export-buttons">
+        <a asp-action="ExportExcel" asp-controller="CustomerAssignedOrderDetail" asp-route-id="@Model.First().UserId" class="btn btn-primary">Export to Excel</a>
+        <a asp-action="ExportPDF" asp-controller="CustomerAssignedOrderDetail" asp-route-id="@Model.First().UserId" class="btn btn-danger">Export to PDF</a>
+    </div>
+}
+
+<a asp-action="Index" asp-controller="CustomerDashboard" class="btn btn-secondary">Back</a>
+
+<style>
+    .detail-heading {
+        text-align: center;
+        font-size: 28px;
+        color: #333;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .table-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    }
+
+    .assigned-order-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+        .assigned-order-table th, .assigned-order-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .assigned-order-table th {
+            background-color: #C7613C;
+            color: white;
+        }
+
+        .assigned-order-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .assigned-order-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-success {
+        background-color: #198754;
+        color: white;
+    }
+
+        .btn-success:hover {
+            background-color: #157347;
+        }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background-color: #c82333;
+        }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+    .badge.bg-secondary {
+        background-color: #6c757d;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    .export-buttons {
+        text-align: center;
+        margin: 20px 0;
+    }
+
+        .export-buttons .btn {
+            margin: 0 10px;
+        }
+
+
+    }
+</style>

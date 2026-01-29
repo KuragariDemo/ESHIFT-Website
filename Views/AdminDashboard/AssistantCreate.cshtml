@@ -1,0 +1,30 @@
+﻿@model EShift.Models.Assistant
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Add Assistant";
+}
+<div class="car-form-container">
+    <h2>Add New Assistant</h2>
+
+    <form asp-action="Create" method="post">
+        <label>Name</label>
+        <input asp-for="AssistantName" required />
+
+        <label>Status</label>
+        <select asp-for="Status">
+            <option value="Available">Available</option>
+            <option value="Busy">Busy</option>
+            <option value="Leave">Leave</option>
+        </select>
+
+        <label>Role</label>
+        <select asp-for="Role" required>
+            <option value="Driver">Driver</option>
+            <option value="Loader">Loader</option>
+        </select>
+
+        <button type="submit" class="btn-primary">Add</button>
+        <a asp-action="Index" class="btn-secondary button-link">Cancel</a>
+    </form>
+
+</div>

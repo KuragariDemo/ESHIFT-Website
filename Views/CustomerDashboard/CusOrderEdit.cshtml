@@ -1,0 +1,50 @@
+﻿@model EShift.Models.CustomerOrder
+
+@{
+    ViewData["Title"] = "Edit Order";
+    Layout = "~/Views/Shared/_CustomerDashboardLayout.cshtml";
+}
+
+<h2 style="text-align:center; margin-bottom: 20px;">Edit Your Order</h2>
+
+<form asp-action="Edit" method="post" class="order-edit-form">
+    <input type="hidden" asp-for="OrderId" />
+
+    <div class="form-group">
+        <label asp-for="FromAddress">From Address:</label>
+        <input asp-for="FromAddress" class="order-input" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ToAddress">To Address:</label>
+        <input asp-for="ToAddress" class="order-input" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Email">Email:</label>
+        <input asp-for="Email" class="order-input" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PhoneNumber">Phone Number:</label>
+        <input asp-for="PhoneNumber" class="order-input" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Name">Name:</label>
+        <input asp-for="Name" class="order-input" />
+    </div>
+
+    <div class="form-group">
+        <label asp-for="UnitType">Unit Type:</label>
+        <select asp-for="UnitType" class="order-input">
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+    </div>
+
+    <div class="submit-area" style="text-align:center;">
+        <button type="submit" class="order-btn">Update</button>
+    </div>
+</form>

@@ -1,0 +1,57 @@
+﻿@model List<EShift.Models.Assistant>
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Assistants";
+}
+<h2>Assistant Table</h2>
+
+<a href="@Url.Action("Create", "Assistant")" class="btn-add">+ Add Assistant</a>
+
+<div class="search-bar-container" style="margin-bottom: 20px;">
+    <form asp-controller="Assistant" asp-action="Index" method="get" style="display: flex; justify-content: flex-end;">
+        <input type="text" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Search Assistant..." />
+        <button type="submit">Search</button>
+    </form>
+</div>
+
+<div class="car-table-container">
+    <table class="car-table">
+        <thead>
+            <tr>
+                <th>Assistant ID</th>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var a in Model)
+            {
+                <tr>
+                    <td>@a.AssistantID</td>
+                    <td>@a.AssistantName</td>
+                    <td>@a.Role</td>
+                    <td>
+                        @if (a.Status == "Busy")
+                        {
+                            <span style="color:red;">Busy</span>
+                        }
+                        else if (a.Status == "Leave")
+                        {
+                            <span style="color:orange;">Leave</span>
+                        }
+                        else
+                        {
+                            <span style="color:green;">Available</span>
+                        }
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit", "Assistant", new { id = a.AssistantID })" class="action-btn btn-edit">Edit</a> 
+                        <a href="@Url.Action("Delete", "Assistant", new { id = a.AssistantID })" class="action-btn btn-delete">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

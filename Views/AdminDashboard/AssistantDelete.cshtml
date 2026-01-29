@@ -1,0 +1,16 @@
+﻿@model EShift.Models.Assistant
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Delete Assistant";
+}
+<div class="car-form-container">
+    <h2>Confirm Delete</h2>
+    <p><strong>Name:</strong> @Model.AssistantName</p>
+    <p><strong>Status:</strong> @Model.Status</p>
+
+    <form asp-action="Delete" method="post">
+        <input type="hidden" asp-for="AssistantID" />
+        <button type="submit" class="btn-danger">Delete</button>
+        <a asp-action="Index" class="btn-secondary button-link">Cancel</a>
+    </form>
+</div>

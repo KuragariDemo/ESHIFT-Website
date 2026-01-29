@@ -1,0 +1,36 @@
+﻿@model EShift.Models.Car
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Add New Car";
+}
+
+<div class="car-form-container">
+    <h2>Add New Car</h2>
+
+    <form asp-action="Create" method="post">
+        <label>Car Type</label>
+        <select asp-for="CarType">
+            <option value="">-- Select --</option>
+            <option value="Small">Small</option>
+            <option value="Medium">Medium</option>
+            <option value="Large">Large</option>
+        </select>
+
+        <label>Car License No</label>
+        <input asp-for="CarLicenseNo" />
+
+        <label>Car Model</label>
+        <input asp-for="CarModel" />
+
+        <label>Status</label>
+        <select asp-for="Status">
+            <option value="Available">Available</option>
+            <option value="Busy">Busy</option>
+            <option value="Under Maintenance">Under Maintenance</option>
+        </select>
+
+        <button type="submit" class="btn-primary">Add Car</button>
+        <a asp-action="Index" class="button-link btn-secondary">Cancel</a>
+    </form>
+</div>

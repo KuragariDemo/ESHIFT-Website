@@ -1,0 +1,382 @@
+﻿@model EShift.Models.AdminDashboardViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h2 class="dashboard-title">Admin Dashboard</h2>
+
+<div class="dashboard-container">
+    <!-- Orders Summary Section -->
+    <div class="order-summary">
+        <div class="order-box pending-orders">
+            <h3>Pending Orders</h3>
+            <p>@Model.PendingOrders</p>
+        </div>
+        <div class="order-box accepted-orders">
+            <h3>Accepted Orders</h3>
+            <p>@Model.AcceptedOrders</p>
+        </div>
+        <div class="order-box finished-orders">
+            <h3>Finished Orders</h3>
+            <p>@Model.FinishedOrders</p>
+        </div>
+    </div>
+
+    <div class="inventory-sections-wrapper">
+        <!-- Car Inventory Management -->
+        <div class="inventory-box">
+            <h3>Car Inventory Management</h3>
+            <div class="cycle-container">
+                <div class="segmented-circle-wrapper">
+                    <!-- SVG will be injected here by JavaScript -->
+                    <div class="circle-center-text" id="carCategoryText"></div>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color-box" style="background-color: #28a745;"></div>
+                        Available: <span id="availableCarsPercentage">@Model.AvailableCars</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box" style="background-color: #dc3545;"></div>
+                        Busy: <span id="busyCarsPercentage">@Model.BusyCars</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box" style="background-color: #ffc107;"></div>
+                        Maintenance: <span id="maintenanceCarsPercentage">@Model.UnderMaintenanceCars</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assistant Inventory Management -->
+        <div class="inventory-box">
+            <h3>Assistant Inventory Management</h3>
+            <div class="cycle-container">
+                <div class="segmented-circle-wrapper">
+                    <!-- SVG will be injected here by JavaScript -->
+                    <div class="circle-center-text" id="assistantCategoryText"></div>
+                </div>
+                <div class="legend">
+                    <div class="legend-item">
+                        <div class="legend-color-box" style="background-color: #28a745;"></div>
+                        Available: <span id="availableAssistantsPercentage">@Model.AvailableAssistants</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box" style="background-color: #dc3545;"></div>
+                        Busy: <span id="busyAssistantsPercentage">@Model.BusyAssistants</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color-box" style="background-color: #ffc107;"></div>
+                        Leave: <span id="leaveAssistantsPercentage">@Model.LeaveAssistants</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Add Font Awesome for icons (optional, but good for general UI) */
+    @@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css");
+    /* Inter font from Google Fonts */
+    @@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+    :root {
+        --primary-color: #e74c3c; /* Red from screenshot */
+        --secondary-color: #f39c12; /* Orange from screenshot */
+        --tertiary-color: #3498db; /* Blue from screenshot */
+        --quaternary-color: #27ae60; /* Green from screenshot */
+        --background-light: #ecf0f1; /* Light background */
+        --card-background: #ffffff;
+        --text-dark: #333;
+        --text-light: #fff;
+        --shadow-light: rgba(0, 0, 0, 0.1);
+        --shadow-medium: rgba(0, 0, 0, 0.15);
+        /* Colors for segments - kept for consistency in CSS, but JS uses direct hex */
+        --segment-available: #28a745; /* Green */
+        --segment-busy: #dc3545; /* Red */
+        --segment-maintenance: #ffc107; /* Orange */
+        --segment-leave: #ffc107; /* Orange */
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: var(--background-light);
+        color: var(--text-dark);
+        line-height: 1.6;
+    }
+
+    .dashboard-title {
+        text-align: center;
+        font-size: 2.5rem;
+        color: var(--text-dark);
+        margin: 40px 0;
+        font-weight: 700;
+    }
+
+    .dashboard-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    /* Order Summary Section */
+    .order-summary {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+    }
+
+    .order-box {
+        padding: 30px;
+        border-radius: 15px;
+        text-align: center;
+        color: var(--text-light);
+        box-shadow: 0 8px 20px var(--shadow-medium);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .order-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--shadow-medium);
+        }
+
+    .pending-orders {
+        background-color: var(--secondary-color); /* Yellow */
+    }
+
+    .accepted-orders {
+        background-color: var(--quaternary-color); /* Green */
+    }
+
+    .finished-orders {
+        background-color: var(--primary-color); /* Red */
+    }
+
+    .order-box h3 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .order-box p {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    /* Inventory Sections */
+    .inventory-sections-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: center;
+    }
+
+    .inventory-box {
+        flex: 1;
+        min-width: 400px; /* Adjusted for larger circle and legend */
+        background: var(--card-background);
+        border-radius: 15px;
+        box-shadow: 0 8px 20px var(--shadow-medium);
+        padding: 30px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+        .inventory-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px var(--shadow-medium);
+        }
+
+        .inventory-box h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+    .cycle-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .segmented-circle-wrapper {
+        position: relative;
+        width: 200px; /* Size of the SVG container */
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+        .segmented-circle-wrapper svg {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg); /* Start from the top */
+        }
+
+    .circle-center-text {
+        position: absolute;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        text-align: center;
+        line-height: 1.2;
+    }
+
+        .circle-center-text span {
+            display: block;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #777;
+        }
+
+    .legend {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px 30px;
+        margin-top: 10px;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+        color: #555;
+        font-weight: 500;
+    }
+
+    .legend-color-box {
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        margin-right: 10px;
+        box-shadow: 0 2px 5px var(--shadow-light);
+    }
+
+    }
+</style>
+
+@section Scripts {
+    <script>
+        // Function to draw a segmented circle using SVG
+        function drawSegmentedCircle(containerSelector, data, categoryTextElementId, typeLabel) {
+            const container = document.querySelector(containerSelector);
+            if (!container) {
+                console.error(`Container not found for selector: ${containerSelector}`);
+                return;
+            }
+
+            // Clear existing SVG if any, but preserve the text element
+            const existingTextElement = container.querySelector(`#${categoryTextElementId}`);
+            container.innerHTML = ''; // Clear all children
+            if (existingTextElement) {
+                container.appendChild(existingTextElement); // Re-add the text element
+            }
+
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", "0 0 100 100"); // Standard viewBox for drawing
+            container.prepend(svg); // Add SVG before the text element
+
+            const radius = 45; // Radius of the circle
+            const centerX = 50; // Center X coordinate
+            const centerY = 50; // Center Y coordinate
+
+            // Total is always 100 for percentages
+            const totalPercentage = 100;
+
+            const categoryTextElement = document.getElementById(categoryTextElementId);
+            if (categoryTextElement) {
+                categoryTextElement.innerHTML = `${typeLabel}`; // Display only the category label
+            }
+
+            // Check if all percentages sum up to 0 (or close to 0)
+            let sumOfPercentages = 0;
+            data.forEach(item => sumOfPercentages += item.value);
+
+            if (sumOfPercentages === 0) {
+                // Draw a full gray circle if no data to show
+                const circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+                circle.setAttribute("cx", centerX);
+                circle.setAttribute("cy", centerY);
+                circle.setAttribute("r", radius);
+                circle.setAttribute("fill", "lightgray");
+                svg.appendChild(circle);
+                return;
+            }
+
+            let currentAngle = 0; // Start angle for the first segment
+
+            data.forEach(segment => {
+                const percentage = segment.value; // Already a percentage
+                const angle = (percentage / totalPercentage) * 360; // Angle in degrees for this segment
+
+                // Calculate start and end points for the arc
+                const startX = centerX + radius * Math.cos(currentAngle * Math.PI / 180);
+                const startY = centerY + radius * Math.sin(currentAngle * Math.PI / 180);
+
+                const endAngle = currentAngle + angle;
+                const endX = centerX + radius * Math.cos(endAngle * Math.PI / 180);
+                const endY = centerY + radius * Math.sin(endAngle * Math.PI / 180);
+
+                // Large arc flag (1 if angle > 180 degrees, 0 otherwise)
+                const largeArcFlag = angle > 180 ? 1 : 0;
+
+                // SVG Path: M (move to), L (line to), A (arc to), Z (close path)
+                const pathData = [
+                    `M ${centerX},${centerY}`, // Move to center
+                    `L ${startX},${startY}`,   // Line to start of arc
+                    `A ${radius},${radius} 0 ${largeArcFlag} 1 ${endX},${endY}`, // Arc
+                    `Z`                        // Close path back to center
+                ].join(' ');
+
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", pathData);
+                path.setAttribute("fill", segment.color);
+                svg.appendChild(path);
+
+                currentAngle = endAngle; // Update current angle for the next segment
+            });
+        }
+
+        // Data for Car Inventory using percentages from the model
+        const carData = [
+            { value: @Model.AvailableCars, color: '#28a745' }, /* Green */
+            { value: @Model.BusyCars, color: '#dc3545' },    /* Red */
+            { value: @Model.UnderMaintenanceCars, color: '#ffc107' } /* Orange */
+        ];
+
+        // Data for Assistant Inventory using percentages from the model
+        const assistantData = [
+            { value: @Model.AvailableAssistants, color: '#28a745' }, /* Green */
+            { value: @Model.BusyAssistants, color: '#dc3545' },    /* Red */
+            { value: @Model.LeaveAssistants, color: '#ffc107' } /* Orange */
+        ];
+
+        // Draw the circles when the DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            drawSegmentedCircle('.inventory-box:nth-of-type(1) .segmented-circle-wrapper', carData, 'carCategoryText', 'Cars');
+            drawSegmentedCircle('.inventory-box:nth-of-type(2) .segmented-circle-wrapper', assistantData, 'assistantCategoryText', 'Assistants');
+        });
+    </script>
+}

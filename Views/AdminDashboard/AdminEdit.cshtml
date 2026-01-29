@@ -1,0 +1,180 @@
+﻿@model EShift.Models.EditAdminViewModel
+
+@{
+    ViewData["Title"] = "Edit Admin";
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+}
+
+<style>
+    /* Base styles for the page */
+    body {
+        font-family: 'Inter', sans-serif; /* Consistent with Admin Control page */
+        background-color: #f8fafc; /* Light background */
+        color: #334155;
+    }
+
+    /* Header Styling */
+    .edit-admin-header {
+        font-size: 2.25rem; /* Larger and more prominent */
+        font-weight: 800; /* Extra bold */
+        color: #1a202c; /* Darker header color */
+        margin-bottom: 2.5rem; /* More spacing below header */
+        text-align: center; /* Center the header */
+        padding-bottom: 0.75rem;
+        border-bottom: 2px solid #e2e8f0; /* Subtle underline */
+        display: block; /* Ensures border spans full width */
+        width: fit-content; /* Adjust width to content */
+        margin-left: auto; /* Center the header block */
+        margin-right: auto; /* Center the header block */
+    }
+
+    /* Form Container Styling */
+    .form-container {
+        background: white;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05); /* Enhanced shadow */
+        border-radius: 0.75rem; /* More rounded corners */
+        padding: 2.5rem; /* More generous padding inside the card */
+        max-width: 500px; /* Slightly wider for better form layout */
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid #e2e8f0; /* Light border */
+    }
+
+    /* Form Field Styling */
+    .form-group {
+        margin-bottom: 1.5rem; /* Consistent spacing between form groups */
+    }
+
+    .form-label {
+        display: block;
+        color: #334155; /* Darker label color */
+        font-size: 0.95rem; /* Slightly larger label text */
+        font-weight: 700; /* Bolder label */
+        margin-bottom: 0.6rem; /* Space between label and input */
+    }
+
+    .form-input {
+        appearance: none; /* Reset default styles */
+        border: 1px solid #cbd5e1; /* Lighter, more modern border */
+        border-radius: 0.5rem; /* Softer rounded corners */
+        width: 100%;
+        padding: 0.75rem 1rem; /* More padding inside inputs */
+        color: #334155;
+        line-height: 1.5;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Smooth transitions */
+    }
+
+    .form-input-readonly {
+        background-color: #f1f5f9; /* Muted background for readonly fields */
+        cursor: not-allowed; /* Indicate non-editable field */
+        border-color: #e2e8f0; /* Lighter border for readonly */
+    }
+
+    .form-input:focus {
+        outline: none;
+        border-color: #4f46e5; /* Primary color on focus */
+        box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2); /* Soft focus ring */
+    }
+
+    .form-select {
+        /* Inherits most styles from .form-input */
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none'%3e%3cpath d='M7 7l3-3 3 3m0 6l-3 3-3-3' stroke='%236B7280' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e"); /* Custom arrow icon */
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1.25rem 1.25rem;
+        padding-right: 2.5rem; /* Make space for the custom arrow */
+    }
+
+    /* Validation Message Styling */
+    .validation-message {
+        color: #ef4444; /* Stronger red for errors */
+        font-size: 0.85rem; /* Slightly larger for readability */
+        margin-top: 0.5rem; /* Space above message */
+        display: block; /* Ensure it takes its own line */
+    }
+
+    /* Button and Link Group */
+    .form-actions {
+        display: flex;
+        justify-content: space-between; /* Space out buttons */
+        align-items: center;
+        margin-top: 2rem; /* More space above action buttons */
+    }
+
+    /* Submit Button */
+    .btn-submit {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.75rem 1.5rem; /* More padding */
+        background-color: #4f46e5; /* Primary blue/purple */
+        color: white;
+        font-weight: 600;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        border: none; /* Remove default button border */
+        cursor: pointer;
+    }
+
+        .btn-submit:hover {
+            background-color: #4338ca; /* Darker on hover */
+            transform: translateY(-1px); /* Slight lift */
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0); /* Press down */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+    /* Back to List Link */
+    .back-link {
+        color: #4f46e5; /* Primary blue/purple for link */
+        font-weight: 600;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+        .back-link:hover {
+            color: #3c32a8; /* Darker on hover */
+            text-decoration: underline;
+        }
+</style>
+
+<h1 class="edit-admin-header">Edit Admin Account</h1>
+
+<div class="form-container">
+    <form asp-action="Edit" method="post">
+        <div asp-validation-summary="ModelOnly" class="validation-message mb-4"></div>
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label asp-for="Email" class="form-label"></label>
+            <input asp-for="Email" class="form-input form-input-readonly" readonly />
+            <span asp-validation-for="Email" class="validation-message"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AdminLevel" class="form-label"></label>
+            <select asp-for="AdminLevel" class="form-input form-select">
+                <option value="1">Level 1 (Full Control)</option>
+                <option value="2">Level 2 (Read Only)</option>
+            </select>
+            <span asp-validation-for="AdminLevel" class="validation-message"></span>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">
+                Save Changes
+            </button>
+            <a asp-action="Index" class="back-link">Back to List</a>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

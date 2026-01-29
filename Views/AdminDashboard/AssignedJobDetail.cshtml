@@ -1,0 +1,124 @@
+﻿@model EShift.Models.AssignedJobDetailViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Assigned Job Detail";
+}
+
+<h2 class="detail-heading">Assigned Job Detail</h2>
+
+<div class="detail-container">
+    <div class="detail-grid">
+        <div><strong>Order ID:</strong> @Model.OrderId</div>
+        <div><strong>From Address:</strong> @Model.FromAddress</div>
+        <div><strong>To Address:</strong> @Model.ToAddress</div>
+        <div><strong>Customer ID:</strong> @Model.UserId</div>
+        <div><strong>Customer Name:</strong> @Model.CustomerName</div>
+        <div><strong>Email:</strong> @Model.Email</div>
+        <div><strong>Phone:</strong> @Model.Phone</div>
+        <div><strong>Car ID:</strong> @Model.CarId</div>
+        <div><strong>Car Lic No:</strong> @Model.CarLicenseNo</div>
+        <div><strong>Car Model:</strong> @Model.CarModel</div>
+        <div><strong>Car Type:</strong> @Model.CarType</div>
+        <div><strong>Driver Name:</strong> @Model.DriverName</div>
+        @for (int i = 0; i < Model.Assistants.Count; i++)
+        {
+            <div><strong>Assistant ID:</strong> @Model.Assistants[i].Id</div>
+            <div><strong>Assistant Name:</strong> @Model.Assistants[i].Name</div>
+        }
+        <div><strong>Scheduled DateTime:</strong> @Model.ScheduledDateTime.ToString("f")</div>
+    </div>
+
+    <div class="button-row">
+        <a href="/AdminDashboard/AssignedJobs" class="btn-outline">🔙 Back</a>
+        <a href="/AdminDashboard/Report/@Model.Id" class="btn-primary">📄 Report</a>
+        @if (Model.Status == "Assigned")
+        {
+            <a href="@Url.Action("Finish", "Job", new { assignedJobId = Model.Id })" class="btn-success">✅ Confirm Finished</a>
+        }
+    </div>
+</div>
+
+<style>
+    .detail-heading {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 28px;
+        color: #333;
+    }
+
+    .detail-container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 25px;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .detail-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+        font-size: 16px;
+        color: #555;
+    }
+
+        .detail-grid div {
+            background-color: #f8f9fa;
+            padding: 12px 16px;
+            border-radius: 10px;
+            box-shadow: inset 0 0 3px rgba(0,0,0,0.05);
+        }
+
+    .button-row {
+        margin-top: 30px;
+        text-align: center;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .btn-primary,
+    .btn-outline,
+    .btn-success {
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .btn-primary {
+        background-color: #0d6efd;
+        color: white;
+        border: none;
+    }
+
+        .btn-primary:hover {
+            background-color: #0b5ed7;
+        }
+
+    .btn-outline {
+        background-color: transparent;
+        color: #6c757d;
+        border: 2px solid #6c757d;
+    }
+
+        .btn-outline:hover {
+            background-color: #6c757d;
+            color: white;
+        }
+
+    .btn-success {
+        background-color: #198754;
+        color: white;
+        border: none;
+    }
+
+        .btn-success:hover {
+            background-color: #157347;
+        }
+</style>

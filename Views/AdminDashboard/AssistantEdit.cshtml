@@ -1,0 +1,57 @@
+﻿@model EShift.Models.Assistant
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Edit Assistant";
+}
+
+<div class="car-form-container">
+    <h2>Edit Assistant</h2>
+
+    @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+    {
+        <div class="validation-error">@error.ErrorMessage</div>
+    }
+
+    <form asp-action="Edit" method="post">
+        <input type="hidden" asp-for="AssistantID" />
+
+        <label>Name</label>
+        <input asp-for="AssistantName" />
+
+        <label>Role</label>
+        @if (Model.Status == "Busy")
+        {
+            <select asp-for="Role" disabled>
+                <option selected>@Model.Role</option>
+            </select>
+            <input type="hidden" name="Role" value="@Model.Role" />
+        }
+        else
+        {
+            <select asp-for="Role">
+                <option value="Driver" selected="@((Model.Role == "Driver").ToString())">Driver</option>
+                <option value="Loader" selected="@((Model.Role == "Loader").ToString())">Loader</option>
+            </select>
+        }
+
+        <label>Status</label>
+        @if (Model.Status == "Busy")
+        {
+            <select asp-for="Status" disabled>
+                <option selected>@Model.Status</option>
+            </select>
+            <input type="hidden" name="Status" value="@Model.Status" />
+            <p class="validation-error">Assistant is busy and cannot be edited.</p>
+        }
+        else
+        {
+            <select asp-for="Status">
+                <option value="Available">Available</option>
+                <option value="Leave">Leave</option>
+            </select>
+        }
+
+        <button type="submit" class="btn-primary">Update</button>
+        <a asp-action="Index" class="btn-secondary button-link">Cancel</a>
+    </form>
+</div>

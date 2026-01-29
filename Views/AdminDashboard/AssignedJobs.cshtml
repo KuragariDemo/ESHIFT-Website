@@ -1,0 +1,190 @@
+﻿@model List<EShift.Models.AssignedJobViewModel>
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Assigned Jobs";
+}
+
+<h2 class="center-heading">Assigned Jobs</h2>
+
+<div class="search-container">
+    <input type="text" id="assignedSearchInput" class="search-input" placeholder="Search by Customer, Car, Driver or Assistant...">
+</div>
+
+<table class="assigned-jobs-table common-table">
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Customer Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Car Model</th>
+            <th>Driver Name</th>
+            <th>Assistants</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody id="assignedJobsTableBody">
+        @foreach (var job in Model)
+        {
+            <tr>
+                <td>@job.OrderId</td>
+                <td>@job.CustomerName</td>
+                <td>@job.Email</td>
+                <td>@job.Phone</td>
+                <td>@job.CarModel</td>
+                <td>@job.DriverName</td>
+                <td>
+                    @foreach (var a in job.AssistantNames)
+                    {
+                        <div>@a</div>
+                    }
+                </td>
+                <td>
+                    <a asp-action="AssignedJobDetail" asp-controller="Job" asp-route-id="@job.Id" class="detail-btn">Detail</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        document.getElementById('assignedSearchInput').addEventListener('input', function () {
+            const searchValue = this.value.toLowerCase();
+            const rows = document.querySelectorAll('#assignedJobsTableBody tr');
+
+            rows.forEach(row => {
+                const rowText = row.innerText.toLowerCase();
+                row.style.display = rowText.includes(searchValue) ? '' : 'none';
+            });
+        });
+    </script>
+}
+
+
+<style>
+
+    .assigned-jobs-heading {
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        color: #333;
+    }
+
+    .assigned-jobs-container {
+        overflow-x: auto;
+        padding: 20px;
+        border-radius: 12px;
+        background-color: #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+    }
+
+    .assigned-jobs-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+        .assigned-jobs-table thead {
+            background-color: #C7613C;
+            color: white;
+        }
+
+        .assigned-jobs-table th, .assigned-jobs-table td {
+            padding: 14px 16px;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .assigned-jobs-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        .assigned-jobs-table tr:hover {
+            background-color: #f0f8ff;
+        }
+
+    .detail-btn {
+        display: inline-block;
+        padding: 8px 14px;
+        background-color: #C7613C;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: background-color 0.3s ease;
+    }
+
+        .detail-btn:hover {
+            background-color: #0dcaf0;
+            color: #fff;
+        }
+
+    .center-heading {
+        text-align: center;
+        margin-top: 20px;
+        color: #333;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .search-container {
+        display: flex;
+        justify-content: flex-end;
+        margin: 10px 20px;
+    }
+
+    .search-input {
+        width: 250px;
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 14px;
+        background-color: #f9f9f9;
+    }
+
+    .common-table {
+        width: 95%;
+        margin: 0 auto 30px auto;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        .common-table th,
+        .common-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .common-table th {
+            background-color: #C7613C;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .common-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+    .detail-btn {
+        padding: 6px 14px;
+        background-color: #C7613C;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+
+        .detail-btn:hover {
+            background-color: #0dcaf0;
+            color: white;
+        }
+
+</style>

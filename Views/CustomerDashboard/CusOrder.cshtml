@@ -1,0 +1,67 @@
+﻿@{
+    Layout = "~/Views/Shared/_CustomerDashboardLayout.cshtml";
+    ViewData["Title"] = "Customer Order";
+}
+
+<link rel="stylesheet" href="~/css/customer-dashboard.css" />
+
+<div class="cus-order-wrapper">
+    <div class="cus-order-container">
+        <h2 class="welcome-title">Welcome, <span class="customer-name">Customer Name</span></h2>
+
+        <form asp-controller="CustomerOrder" asp-action="Create" method="post" class="order-form">
+            <div class="form-section">
+                <label>From Address:</label>
+                <input type="text" name="FromAddress" class="order-input" placeholder="Enter From Address" required />
+
+                <label>To Address:</label>
+                <input type="text" name="ToAddress" class="order-input" placeholder="Enter To Address" required />
+
+                <label>Email:</label>
+                <input type="email" name="Email" class="order-input" placeholder="Enter Email" required />
+
+                <label>Phone Number:</label>
+                <input type="text" name="PhoneNumber" class="phone-input" placeholder="Enter phone number" required />
+
+                <label>Name:</label>
+                <input type="text" name="Name" class="order-input" placeholder="Enter Your Name" required />
+
+                <label>Unit Type:</label>
+                <input type="text" id="SelectedUnit" name="UnitType" class="order-input" readonly />
+            </div>
+
+            <div class="unit-selection">
+                <div class="unit-box">
+                    <h3>Small</h3>
+                    <img src="~/images/Small-Car.jpg" alt="Small Unit" />
+                    <p>Unit for small shifting. Includes 2 assistants.</p>
+                    <button type="button" class="select-btn" onclick="selectUnit('Small')">Choose</button>
+                </div>
+                <div class="unit-box">
+                    <h3>Medium</h3>
+                    <img src="~/images/Medium-Car.jpg" alt="Medium Unit" />
+                    <p>Unit for medium shifting. Includes 4 assistants.</p>
+                    <button type="button" class="select-btn" onclick="selectUnit('Medium')">Choose</button>
+                </div>
+                <div class="unit-box">
+                    <h3>Large</h3>
+                    <img src="~/images/Large-Car.jpg" alt="Large Unit" />
+                    <p>Unit for large shifting. Includes 6 assistants.</p>
+                    <button type="button" class="select-btn" onclick="selectUnit('Large')">Choose</button>
+                </div>
+            </div>
+
+            <div class="submit-area">
+                <button type="submit" class="order-btn">Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function selectUnit(unitType) {
+            document.getElementById("SelectedUnit").value = unitType;
+        }
+    </script>
+}

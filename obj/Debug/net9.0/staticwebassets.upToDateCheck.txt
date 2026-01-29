@@ -1,0 +1,144 @@
+wwwroot\css\dashboard.css
+wwwroot\css\site.css
+wwwroot\favicon.ico
+wwwroot\images\admindashboard.png
+wwwroot\images\agent-photo.jpg
+wwwroot\images\CusOrder.png
+wwwroot\images\CusOrderList.png
+wwwroot\images\home-bg.jfif
+wwwroot\images\Home.png
+wwwroot\images\Large-Car.jpg
+wwwroot\images\logo.png
+wwwroot\images\massage.png
+wwwroot\images\Medium-Car.jpg
+wwwroot\images\profile.png
+wwwroot\images\Small-Car.jpg
+wwwroot\images\vehicel.jpg
+wwwroot\js\site.js
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+wwwroot\lib\jquery-validation\dist\additional-methods.js
+wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+wwwroot\lib\jquery-validation\LICENSE.md
+wwwroot\lib\jquery\dist\jquery.js
+wwwroot\lib\jquery\dist\jquery.min.js
+wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\lib\jquery\dist\jquery.slim.js
+wwwroot\lib\jquery\dist\jquery.slim.min.js
+wwwroot\lib\jquery\dist\jquery.slim.min.map
+wwwroot\lib\jquery\LICENSE.txt
+wwwroot\uploads\09a05da1-56d7-4dc7-90b0-2d7e137c11fc.png
+wwwroot\uploads\24168843-73a7-43b2-a6b6-981230101b8b.png
+wwwroot\uploads\2c1e4070-f747-4182-981b-7be737e3a7f7.png
+wwwroot\uploads\f06619b7-0ce0-42d2-b79d-e6acecaf3d43.png
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\css\dashboard.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\css\site.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\favicon.ico
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\js\site.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation\dist\additional-methods.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery-validation\LICENSE.md
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery\dist\jquery.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery\dist\jquery.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery\dist\jquery.min.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery\dist\jquery.slim.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery\dist\jquery.slim.min.js
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery\dist\jquery.slim.min.map
+D:\IT\LMU\Sem 1st\App and Web Dev\Assignment\CC\Software & Website\ESHIFT-Website\wwwroot\lib\jquery\LICENSE.txt

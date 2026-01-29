@@ -1,0 +1,222 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<!-- Banner Section -->
+<section class="banner-section">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <!-- Left Side -->
+        <div class="d-flex align-items-center">
+            <img src="/images/logo.png" alt="E-Shift Logo" style="height: 30px; margin-right: 15px; margin-top: 5px; border-radius: 15%;">
+            <h1 class="brand-text mb-0">E-SHIFT</h1>
+        </div> 
+
+        <!-- Right Side -->
+        <div class="d-flex">
+            <!-- Number #1 -->
+            <div class="me-4 text-center">
+                <h5 class="mb-1 text-orange">Number #1</h5>
+                <p class="mb-0 text-black">in Thailand</p>
+            </div>
+            <!-- Satisfaction -->
+            <div class="me-4 text-center">
+                <h5 class="mb-1 text-yellow">Satisfaction</h5>
+                <p class="mb-0 text-black">more than 90%</p>
+            </div>
+            <!-- Trusted By -->
+            <div class="text-center">
+                <h5 class="mb-1 text-blue">Trusted By</h5>
+                <p class="mb-0 text-black">4000+ Clients</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Navigation Box -->
+    <div class="container-fluid">
+        <div class="nav-box d-flex justify-content-between align-items-center px-4 py-3">
+            <a href="/" class="nav-btn">Home</a>
+            <a href="/Services" class="nav-btn">Our Services</a>
+            <a href="/About" class="nav-btn">About Us</a>
+            <a href="/HQ" class="nav-btn">HQ</a>
+            <a href="/Contact" class="nav-btn">Contact Us</a>
+            <a href="/Quote" class="nav-btn quote-btn">Get a Quote</a>
+            <a asp-controller="CustomerDashboard" asp-action="CusProfile" class="nav-btn DashBoard-btn">
+                DashBoard
+            </a>
+        </div>
+    </div>
+
+    <!-- Content Box -->
+    <div class="container-fluid">
+        <div class="content-box">
+            <div class="welcome-section">
+                <div class="welcome-text">
+                    <p class="welcome-top">Welcome to</p>
+                    <p class="welcome-bottom">E-SHIFT</p>
+                </div>
+                <img src="~/images/logo.png" alt="E-SHIFT Logo" class="eshift-logo" />
+            </div>
+            <p class="intro-text">
+                No matter the size scope of your move, with 20+ years experience in the mobility industry,
+                E-Shift Relocations (Thailand) accommodates any move that is needed by clients.
+            </p>
+            <div class="button-container">
+                <a href="#" class="action-btn learn-more-btn">Learn More</a>
+                <a href="#" class="action-btn contact-us-btn">Contact Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Decorative Line -->
+<div class="section-divider2"></div>
+</section>
+</section>
+
+<!-- Services Section -->
+<section class="main-section services-section">
+    <h2 class="services-heading">Our Services</h2>
+
+    <div class="services-grid">
+        <!-- Service Box 1 -->
+        <div class="service-box">
+            <div class="service-img">
+                <img src="~/images/Small-Car.jpg" alt="For Small Move">
+            </div>
+            <div class="service-content">
+                <h3>For Small Move</h3>
+                <p><strong>Perfect for:</strong> Studio apartments, small office moves, or a few boxes and furniture.</p>
+                <p><strong>Capacity:</strong> Carries up to 1.5 tons (light items and limited volume).</p>
+                <p><strong>Why choose this?</strong> Ideal for light loads and tight city streets.</p>
+            </div>
+            <a href="#" class="service-btn">Learn More</a>
+        </div>
+
+        <!-- Service Box 2 -->
+        <div class="service-box">
+            <div class="service-img">
+                <img src="~/images/Medium-Car.jpg" alt="For Medium Move">
+            </div>
+            <div class="service-content">
+                <h3>For Medium Move</h3>
+                <p><strong>Perfect for:</strong> 1–2 bedroom apartments or moderate-sized moves.</p>
+                <p><strong>Capacity:</strong> Carries up to 3.5 tons (more space for furniture, boxes, and appliances).</p>
+                <p><strong>Why choose this?</strong> Great balance between space and maneuverability.</p>
+            </div>
+            <a href="#" class="service-btn">Learn More</a>
+        </div>
+
+        <!-- Service Box 3 -->
+        <div class="service-box">
+            <div class="service-img">
+                <img src="~/images/Large-Car.jpg" alt="For Large Move">
+            </div>
+            <div class="service-content">
+                <h3>For Large Move</h3>
+                <p><strong>Perfect for:</strong> Full house moves, heavy equipment, or large business deliveries.</p>
+                <p><strong>Capacity:</strong> Carries up to 13 tons (suitable for high-volume and heavy loads).</p>
+                <p><strong>Why choose this?</strong> Best for large-scale moves with bulky or heavy items.</p>
+            </div>
+            <a href="#" class="service-btn">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Decorative Line -->
+<div class="section-divider"></div>
+</section>
+</section>
+
+<!-- About Our Agent -->
+<section class="about-agent">
+    <div class="about-content">
+        <div class="about-left">
+            <h2>About Our Agent</h2>
+            <img src="~/images/agent-photo.jpg" alt="Our Agent">
+        </div>
+        <div class="about-right">
+            <p>
+                As a leading moving company in Bangkok, we believe that excellent customer service should be at the forefront of all operations, from the physical aspect of actually moving your possessions or business inventory from point A to point B to the ongoing support during your move. Moving from city to city in Thailand, overseas relocation, and factory/industry moves are all within our remit and we aim to make the process as stress-free as possible from start to finish. If you are planning any type of move imminently or in the future, our experienced moving service in Bangkok is more than ready to meet your requirements. Get in touch today for an initial consultation with one of our expert removalists in Bangkok.
+            </p>
+            <a href="#" class="quote-btn">Get a Quote</a>
+        </div>
+    </div>
+</section>
+
+<!-- Decorative Line -->
+<div class="section-divider2"></div>
+</section>
+</section>
+
+<section class="contact-section">
+    <div class="contact-container">
+        <!-- Left Side -->
+        <div class="contact-left">
+            <h2>Contact E-SHIFT Relocations (Thailand)</h2>
+            <p>
+                If you have any questions or concerns regarding a current or upcoming move with us, then please contact us at your earliest convenience using any of our many means for communication. Of course, our doors are always open to you; all you have to do is walk in.
+            </p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> eshift.com</p>
+                <p><strong>Branch Manager:</strong> gm@eshift.com</p>
+            </div>
+        </div>
+
+        <!-- Right Side -->
+        <div class="contact-right">
+            <form action="#" method="post">
+                <div class="form-row">
+                    <input type="text" name="fullname" placeholder="Full Name" required>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-row">
+                    <input type="text" name="subject" placeholder="Subject" required>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+                <textarea name="message" rows="5" placeholder="Message" required></textarea>
+                <button type="submit" class="contact-btn">Send Message</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+<!-- Footer Section -->
+<section class="footer-section">
+    <div class="footer-top">
+        <div class="footer-brand">
+            <h2 class="footer-heading">E-SHIFT</h2>
+            <img src="~/images/logo.png" alt="E-SHIFT Logo" class="footer-logo">
+        </div>
+        <button class="footer-btn">Get a Quote</button>
+    </div>
+
+    <div class="footer-bottom">
+        <!-- Services -->
+        <div class="footer-column">
+            <h3>Services</h3>
+            <a href="#">Domestic Move</a>
+            <a href="#">Office Move</a>
+            <a href="#">Storage Services</a>
+            <a href="#">Additional Services Request</a>
+        </div>
+
+        <!-- Useful Links -->
+        <div class="footer-column">
+            <h3>Useful Links</h3>
+            <a href="#">HQ</a>
+            <a href="#">About Us</a>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="footer-column">
+            <h3>Contact Us</h3>
+            <a href="mailto:eshift.com">Email: eshift.com</a>
+            <a href="tel:+66123456789">Phone: +66 123456789</a>
+            <a href="mailto:gm@eshift.com">Branch Manager: gm@eshift.com</a>
+        </div>
+    </div>
+</section>
+<!-- Footer Section End -->
+
+

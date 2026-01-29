@@ -1,0 +1,266 @@
+﻿@model EShift.Models.AssignJobViewModel
+
+@{
+    Layout = "~/Views/Shared/_AdminDashboardLayout.cshtml";
+    ViewData["Title"] = "Assign Job to Order";
+}
+
+<link rel="stylesheet" href="~/css/jobassign.css" />
+
+<div class="assign-job-container">
+    <h2>Assign Job to Order</h2>
+
+    <div class="order-info">
+        <p><strong>Order ID:</strong> @Model.Order.OrderId</p>
+        <p><strong>From:</strong> @Model.Order.FromAddress</p>
+        <p><strong>To:</strong> @Model.Order.ToAddress</p>
+        <p><strong>Email:</strong> @Model.Order.Email</p>
+        <p><strong>Phone:</strong> @Model.Order.PhoneNumber</p>
+        <p><strong>Name:</strong> @Model.Order.Name</p>
+        <p><strong>Unit Type:</strong> @Model.Order.UnitType</p>
+    </div>
+
+    <div class="assigned-summary">
+        <h4>Assigned Items</h4>
+        <ul>
+            <li><strong>Car:</strong> <span id="assignedCarDisplay">None</span></li>
+            <li><strong>Driver:</strong> <span id="assignedDriverDisplay">None</span></li>
+            <li><strong>Loaders:</strong> <span id="assignedLoadersDisplay">None</span></li>
+        </ul>
+    </div>
+
+    <hr />
+
+    <!-- Car Modal -->
+    <button type="button" onclick="openModal('carModal')">Assign Car</button>
+    <div id="carModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('carModal')">&times;</span>
+            <h3>Select a Car</h3>
+            <table class="assign-table">
+                <thead>
+                    <tr><th>ID</th><th>Model</th><th>License</th><th>Type</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    @if (Model?.AvailableCars?.Any() == true)
+                    {
+                        foreach (var car in Model.AvailableCars)
+                        {
+                            <tr>
+                                <td>@car.CarID</td>
+                                <td>@car.CarModel</td>
+                                <td>@car.CarLicenseNo</td>
+                                <td>@car.CarType</td>
+                                <td><button onclick="assignCar('@car.CarID', '@car.CarModel', '@car.CarLicenseNo', this)">Assign</button></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="5">No available cars.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Driver Modal -->
+    <button type="button" onclick="openModal('driverModal')">Assign Driver</button>
+    <div id="driverModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('driverModal')">&times;</span>
+            <h3>Select a Driver</h3>
+            <table class="assign-table">
+                <thead>
+                    <tr><th>ID</th><th>Name</th><th>Role</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    @if (Model?.AvailableDrivers?.Any() == true)
+                    {
+                        foreach (var driver in Model.AvailableDrivers)
+                        {
+                            <tr>
+                                <td>@driver.AssistantID</td>
+                                <td>@driver.AssistantName</td>
+                                <td>@driver.Role</td>
+                                <td><button onclick="assignDriver('@driver.AssistantID', '@driver.AssistantName', this)">Assign</button></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="4">No available drivers.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Loader Modal -->
+    <button type="button" onclick="openModal('loaderModal')">Assign Loader</button>
+    <div id="loaderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('loaderModal')">&times;</span>
+            <h3>Select Loaders</h3>
+            <table class="assign-table">
+                <thead>
+                    <tr><th>ID</th><th>Name</th><th>Role</th><th>Action</th></tr>
+                </thead>
+                <tbody>
+                    @if (Model?.AvailableLoaders?.Any() == true)
+                    {
+                        foreach (var loader in Model.AvailableLoaders)
+                        {
+                            <tr>
+                                <td>@loader.AssistantID</td>
+                                <td>@loader.AssistantName</td>
+                                <td>@loader.Role</td>
+                                <td><button onclick="assignLoader('@loader.AssistantID', '@loader.AssistantName', this)">Assign</button></td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr><td colspan="4">No available loaders.</td></tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <hr />
+
+    @* 🔴 Show validation summary if there are errors *@
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="alert alert-danger">
+            <strong>Please fix the following errors:</strong>
+            <ul>
+                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                {
+                    <li>@error.ErrorMessage</li>
+                }
+            </ul>
+        </div>
+    }
+
+    @* ✅ The main form *@
+    <form asp-controller="Job" asp-action="Assign" method="post">
+        @Html.AntiForgeryToken()
+
+        <input type="hidden" asp-for="OrderId" />
+
+        <input type="hidden" asp-for="SelectedCarId" id="SelectedCarId" />
+        <input type="hidden" asp-for="SelectedDriverId" id="SelectedDriverId" />
+        <input type="hidden" asp-for="SelectedLoaderIds" id="SelectedLoaderIds" />
+
+        <div class="form-group">
+            <label asp-for="ScheduledDate">Date:</label>
+            <input type="date" asp-for="ScheduledDate" class="form-control" required />
+            <span asp-validation-for="ScheduledDate" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ScheduledTime">Time:</label>
+            <input type="time" asp-for="ScheduledTime" class="form-control" required />
+            <span asp-validation-for="ScheduledTime" class="text-danger"></span>
+        </div>
+
+        <br />
+        <button type="submit" class="btn-primary">Assign Job ✅</button>
+        <a href="/AdminCustomerOrder" class="btn-secondary">Cancel ❌</a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        let assignedLoaders = [];
+        let assignedLoaderNames = [];
+        let unitType = "@Model.Order.UnitType";
+        let maxLoaders = unitType === "Small" ? 2 : unitType === "Medium" ? 4 : 6;
+
+        function assignCar(carId, carModel, carLicense, btn) {
+            document.getElementById("SelectedCarId").value = carId;
+            document.getElementById("assignedCarDisplay").innerText = `${carLicense} (${carModel})`;
+            btn.innerText = "Remove";
+            btn.onclick = function () {
+                document.getElementById("SelectedCarId").value = "";
+                document.getElementById("assignedCarDisplay").innerText = "None";
+                btn.innerText = "Assign";
+                btn.onclick = () => assignCar(carId, carModel, carLicense, btn);
+            };
+        }
+
+        function assignDriver(driverId, driverName, btn) {
+            document.getElementById("SelectedDriverId").value = driverId;
+            document.getElementById("assignedDriverDisplay").innerText = driverName;
+            btn.innerText = "Remove";
+            btn.onclick = function () {
+                document.getElementById("SelectedDriverId").value = "";
+                document.getElementById("assignedDriverDisplay").innerText = "None";
+                btn.innerText = "Assign";
+                btn.onclick = () => assignDriver(driverId, driverName, btn);
+            }
+        }
+
+        function assignLoader(loaderId, loaderName, btn) {
+            if (assignedLoaders.includes(loaderId)) {
+                alert("Already selected.");
+                return;
+            }
+
+            if (assignedLoaders.length >= maxLoaders) {
+                alert(`Maximum ${maxLoaders} loaders allowed for ${unitType} unit.`);
+                return;
+            }
+
+            assignedLoaders.push(loaderId);
+            assignedLoaderNames.push(loaderName);
+            document.getElementById("SelectedLoaderIds").value = assignedLoaders.join(',');
+            updateLoaderDisplay();
+
+            btn.innerText = "Remove";
+            btn.onclick = function () {
+                const index = assignedLoaders.indexOf(loaderId);
+                if (index > -1) {
+                    assignedLoaders.splice(index, 1);
+                    assignedLoaderNames.splice(index, 1);
+                }
+                document.getElementById("SelectedLoaderIds").value = assignedLoaders.join(',');
+                updateLoaderDisplay();
+                btn.innerText = "Assign";
+                btn.onclick = () => assignLoader(loaderId, loaderName, btn);
+            };
+        }
+
+        function updateLoaderDisplay() {
+            document.getElementById("assignedLoadersDisplay").innerText =
+                assignedLoaderNames.length ? assignedLoaderNames.join(', ') : "None";
+        }
+
+        function openModal(id) {
+            document.getElementById(id).style.display = "block";
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).style.display = "none";
+        }
+
+        window.onclick = function (event) {
+            document.querySelectorAll('.modal').forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+
+        document.querySelector("form").addEventListener("submit", function (e) {
+            console.log("Submitting job assignment...");
+            console.log("Car ID:", document.getElementById("SelectedCarId").value);
+            console.log("Driver ID:", document.getElementById("SelectedDriverId").value);
+            console.log("Loaders:", document.getElementById("SelectedLoaderIds").value);
+        });
+    </script>
+}

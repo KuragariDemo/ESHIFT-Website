@@ -1,0 +1,74 @@
+﻿@{
+    Layout = null;
+    var userName = User.Identity.Name ?? "Admin";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - E-SHIFT</title>
+    <link rel="stylesheet" href="~/css/dashboard.css" />
+</head>
+<body class="cd-body">
+    <div class="cd-dashboard-container">
+        <!-- Sidebar -->
+        <div class="cd-sidebar">
+            <div>
+                <img src="~/images/logo.png" alt="E-SHIFT Logo" class="cd-logo" />
+                <div class="cd-welcome">
+                    Welcome, Admin
+                    <span class="cd-customer-name">@userName</span>
+                </div>
+                <div class="cd-nav-buttons">
+
+                    <!-- Admin-specific Navigation -->
+                    <a asp-controller="AdminDashboard" asp-action="AdminProfile" class="cd-nav-btn">
+                        <img src="~/images/profile.png" alt="Admin Profile" /> Profile
+                    </a>
+
+                    <a asp-controller="Car" asp-action="Index" class="cd-nav-btn">
+                        <img src="~/images/vehicel.jpg" alt="Vehicle Table" /> Vehicle Table
+                    </a>
+
+                    <a href="/Assistant" class="cd-nav-btn">
+                        <img src="~/images/profile.png" alt="Assistant Table" /> Assistant Table
+                    </a>
+
+                    <a asp-controller="AdminCustomerOrder" asp-action="Index" class="cd-nav-btn">
+                        <img src="~/images/CusOrder.png" alt="Customer Orders" /> Customer Orders
+                    </a>
+
+                    <a asp-controller="Job" asp-action="AssignedJobs" class="cd-nav-btn">
+                        <img src="~/images/CusOrderList.png" alt="Assigned Jobs" /> Assigned Orders
+                    </a>
+
+                    <a asp-controller="Admin" asp-action="Index" class="cd-nav-btn">
+                        <img src="~/images/profile.png" alt="Admin Control" /> Admin Control
+                    </a>
+
+
+                    <a asp-controller="AdminProgressDashboard" asp-action="AdminDashboard" class="cd-nav-btn">
+                        <img src="~/images/admindashboard.png" alt="Admin Dashboard" /> Admin Dashboard
+                    </a>
+
+
+
+
+                </div>
+            </div>
+            <div class="cd-footer">
+                <span>@userName</span>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="cd-main-content">
+            @RenderBody()
+        </div>
+    </div>
+
+    <!-- Add this line to render any scripts section -->
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

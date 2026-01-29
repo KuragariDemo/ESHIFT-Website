@@ -1,0 +1,64 @@
+﻿@model List<EShift.Models.CustomerOrder>
+
+@{
+    Layout = "~/Views/Shared/_CustomerDashboardLayout.cshtml";
+    ViewData["Title"] = "My Orders";
+}
+
+<h2 style="text-align: center; margin-bottom: 20px;">Your Orders</h2>
+
+<table class="order-table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>From Address</th>
+            <th>To Address</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Name</th>
+            <th>Unit Type</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.FromAddress</td>
+                <td>@order.ToAddress</td>
+                <td>@order.Email</td>
+                <td>@order.PhoneNumber</td>
+                <td>@order.Name</td>
+                <td>@order.UnitType</td>
+                <td>
+                    @if (order.Status == "Accepted")
+                    {
+                        <span class="status-accepted">Accepted</span>
+                    }
+                    else if (order.Status == "Finished")
+                    {
+                        <span class="status-finished">Finished</span>
+                    }
+                    else
+                    {
+                        <span class="status-pending">Pending</span>
+                    }
+                </td>
+                <td>
+                    @if (order.Status != "Pending")
+                    {
+                        <a href="/CustomerOrder/Detail/@order.OrderId" class="detail-btn">Detail</a>
+                    }
+                    else if (order.Status == "Pending")
+                    {
+                        <a href="/CustomerOrder/Edit/@order.OrderId" class="edit-btn">Edit</a>
+                    }
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+
